@@ -295,4 +295,8 @@ tream
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
+public/bundle.js
+public/bundle.js.map
+
+
 # End of https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,webstorm
