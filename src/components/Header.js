@@ -16,18 +16,6 @@ const Header = () => (
     >
       Create Expense
     </NavLink>
-    <NavLink
-      className={({ isActive }) => (isActive ? "is-active" : undefined)}
-      to="/edit"
-    >
-      Edit Expense
-    </NavLink>
-    <NavLink
-      className={({ isActive }) => (isActive ? "is-active" : undefined)}
-      to="/help"
-    >
-      Help
-    </NavLink>
   </header>
 );
 
