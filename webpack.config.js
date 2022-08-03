@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = (env) => {
-  const isProduction = env.production === true
+  const isProduction = env.production === true;
   return {
     entry: "./src/app.js",
     output: {
@@ -22,10 +22,10 @@ module.exports = (env) => {
         },
       ],
     },
-    devtool: isProduction ?"source-map" :"eval-cheap-module-source-map",
+    devtool: isProduction ? "source-map" : "eval-cheap-module-source-map",
     devServer: {
       historyApiFallback: true,
       static: path.join(__dirname, "public"),
     },
   };
-}
+};
