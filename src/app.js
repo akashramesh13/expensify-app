@@ -14,6 +14,7 @@ const container = document.getElementById("app");
 const root = createRoot(container);
 const store = configureStore();
 
+import { login, logout } from "./actions/auth";
 import { auth, onAuthStateChanged } from "./firebase/firebase";
 
 store.dispatch(sortByDate());
@@ -28,11 +29,12 @@ const jsx = (
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("Logged in!!!");
+    store.dispatch(login(user.uid));
     if (history.location.pathname === "/") {
       history.push("/dashboard");
     }
   } else {
+    store.dispatch(logout());
     history.push("/");
   }
 });

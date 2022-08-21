@@ -8,7 +8,7 @@ const Header = ({ startLogout }) => (
     <h1>Expensify</h1>
     <NavLink
       className={({ isActive }) => (isActive ? "is-active" : undefined)}
-      to="/"
+      to="/dashboard"
     >
       Home
     </NavLink>
