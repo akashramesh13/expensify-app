@@ -39,7 +39,7 @@ export const setExpenses = (expenses) => ({
 });
 
 export const startSetExpenses = () => {
-  return async  (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const uid = getState().auth.uid;
     return onValue(ref(db, `users/${uid}/expenses`), (snapshot) => {
       const expenses = [];
