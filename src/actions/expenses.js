@@ -1,20 +1,56 @@
 import { v4 } from "uuid";
+import db, { onValue, ref, set } from "../firebase/firebase";
 
-export const addExpense = ({
-  description = "",
-  note = "",
-  amount = 0,
-  createdAt = 0,
-} = {}) => ({
+// ADD EXPENSE
+export const addExpense = (expense) => ({
   type: "ADD_EXPENSE",
-  expense: {
-    amount,
-    createdAt,
-    description,
-    id: v4(),
-    note,
-  },
+  expense,
 });
+
+export const startAddExpense = (expenseData = {}) => {
+  return (dispatch) => {
+    const {
+      description = "",
+      note = "",
+      amount = 0,
+      createdAt = 0,
+    } = expenseData;
+    const expense = {
+      id: v4(),
+      description,
+      note,
+      amount,
+      createdAt,
+    };
+    set(ref(db, "expenses/" + expense.id), {
+      ...expense,
+    }).then(() => {
+      dispatch(addExpense(expense));
+    });
+  };
+};
+
+// SET EXPENSE
+
+export const setExpenses = (expenses) => ({
+  type: "SET_EXPENSES",
+  expenses,
+});
+
+export const startSetExpenses = () => {
+  return async (dispatch) => {
+    onValue(ref(db, "expenses"), (snapshot) => {
+      const expenses = [];
+      snapshot.forEach((childSnapshot) => {
+        4;
+        expenses.push({
+          ...childSnapshot.val(),
+        });
+      });
+      dispatch(setExpenses(expenses));
+    });
+  };
+};
 
 // REMOVE_EXPENSE
 
@@ -22,6 +58,14 @@ export const removeExpense = ({ id }) => ({
   type: "REMOVE_EXPENSE",
   id,
 });
+
+export const startRemoveExpense = ({ id } = {}) => {
+  return (dispatch) => {
+    set(ref(db, `expenses/${id}`), {}).then(() => {
+      dispatch(removeExpense({ id }));
+    });
+  };
+};
 
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({

@@ -5,7 +5,7 @@ import selectExpensesTotal from "../selectors/expenses-total";
 
 const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
   const expenseWord = expenseCount === 1 ? "expense" : "expenses";
-  const formattedExpensesTotal = (expensesTotal/100).toLocaleString("en-IN", {
+  const formattedExpensesTotal = (expensesTotal / 100).toLocaleString("en-IN", {
     maximumFractionDigits: 2,
     style: "currency",
     currency: "INR",
