@@ -8,7 +8,8 @@ export const addExpense = (expense) => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       description = "",
       note = "",
@@ -22,7 +23,7 @@ export const startAddExpense = (expenseData = {}) => {
       amount,
       createdAt,
     };
-    set(ref(db, "expenses/" + expense.id), {
+    set(ref(db, `users/${uid}/expenses/${expense.id}`), {
       ...expense,
     }).then(() => {
       dispatch(addExpense(expense));
@@ -38,11 +39,11 @@ export const setExpenses = (expenses) => ({
 });
 
 export const startSetExpenses = () => {
-  return async (dispatch) => {
-    onValue(ref(db, "expenses"), (snapshot) => {
+  return  (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    onValue(ref(db, `users/${uid}/expenses`), (snapshot) => {
       const expenses = [];
       snapshot.forEach((childSnapshot) => {
-        4;
         expenses.push({
           ...childSnapshot.val(),
         });

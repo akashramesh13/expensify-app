@@ -7,18 +7,25 @@ import {
 import AddExpensePage from "../components/AddExpensePage";
 import EditExpensePage from "../components/EditExpensePage";
 import ExpenseDashboardPage from "../components/ExpenseDashboardPage";
-import HelpPage from "../components/HelpPage";
 import LoginPage from "../components/LoginPage";
 import NotFoundPage from "../components/NotFoundPage";
 import { createBrowserHistory } from "history";
 import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 export const history = createBrowserHistory();
 
 const AppRouter = () => (
   <HistoryRouter history={history}>
     <Routes>
-      <Route index element={<LoginPage />} />
+      <Route
+        index
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
       <Route
         path="dashboard"
         element={
@@ -43,11 +50,6 @@ const AppRouter = () => (
           </PrivateRoute>
         }
       />
-      {/* <Route path="dashboard" element={<ExpenseDashboardPage/>} />
-          //       <Route path="edit/:id" element={<EditExpensePage />} />
-          //     <Route path="create" element={<AddExpensePage />} />
-          //       </PrivateRoute> */}
-      <Route path="help" element={<HelpPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </HistoryRouter>

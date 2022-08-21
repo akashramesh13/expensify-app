@@ -19,7 +19,6 @@ import { auth, onAuthStateChanged } from "./firebase/firebase";
 
 store.dispatch(sortByDate());
 
-store.dispatch(startSetExpenses());
 
 const jsx = (
   <Provider store={store}>
@@ -30,6 +29,7 @@ const jsx = (
 onAuthStateChanged(auth, (user) => {
   if (user) {
     store.dispatch(login(user.uid));
+    store.dispatch(startSetExpenses());
     if (history.location.pathname === "/") {
       history.push("/dashboard");
     }

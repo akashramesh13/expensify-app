@@ -12,7 +12,7 @@ const AddExpensePage = (props) => {
       <ExpenseForm
         onSubmit={(expense) => {
           props.dispatch(startAddExpense(expense));
-          return navigate("/");
+          return navigate("/dashboard");
         }}
       />
     </div>

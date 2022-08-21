@@ -11,7 +11,6 @@ const LoginPage = (props) => (
 
 const mapDispatchToProps = (dispatch) => ({
   startLogin: () => {
-    console.log("Started dispatch")
     return dispatch(startLogin)},
 });
 
