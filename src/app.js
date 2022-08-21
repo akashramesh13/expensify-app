@@ -16,9 +16,9 @@ const store = configureStore();
 
 import { login, logout } from "./actions/auth";
 import { auth, onAuthStateChanged } from "./firebase/firebase";
+import LoadingPage from "./components/LoadingPage";
 
 store.dispatch(sortByDate());
-
 
 const jsx = (
   <Provider store={store}>
@@ -26,17 +26,29 @@ const jsx = (
   </Provider>
 );
 
+let hasRendered = false;
+
+const renderApp = () => {
+  if (!hasRendered) {
+    root.render(jsx);
+    hasRendered = true;
+  }
+};
+
+root.render(<LoadingPage />);
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     store.dispatch(login(user.uid));
-    store.dispatch(startSetExpenses());
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp();
+    });
     if (history.location.pathname === "/") {
       history.push("/dashboard");
     }
   } else {
     store.dispatch(logout());
+    renderApp();
     history.push("/");
   }
 });
-
-root.render(jsx);

@@ -39,16 +39,16 @@ export const setExpenses = (expenses) => ({
 });
 
 export const startSetExpenses = () => {
-  return  (dispatch, getState) => {
+  return async  (dispatch, getState) => {
     const uid = getState().auth.uid;
-    onValue(ref(db, `users/${uid}/expenses`), (snapshot) => {
+    return onValue(ref(db, `users/${uid}/expenses`), (snapshot) => {
       const expenses = [];
       snapshot.forEach((childSnapshot) => {
         expenses.push({
           ...childSnapshot.val(),
         });
       });
-      dispatch(setExpenses(expenses));
+      return dispatch(setExpenses(expenses));
     });
   };
 };
