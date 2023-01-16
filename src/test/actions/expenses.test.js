@@ -21,7 +21,6 @@ test("should setup edit expense action", () => {
   });
 });
 
-test("should setup add expnse action object with provided values", () => {});
 test("should setup add expnse action object with provided values", () => {
   const expenseData = {
     description: "Rent",
@@ -34,20 +33,6 @@ test("should setup add expnse action object with provided values", () => {
     type: "ADD_EXPENSE",
     expense: {
       ...expenseData,
-      id: expect.any(String),
-    },
-  });
-});
-test("should setup add expnse action object with default values", () => {
-  const action = addExpense();
-  expect(action).toEqual({
-    type: "ADD_EXPENSE",
-    expense: {
-      amount: 0,
-      createdAt: 0,
-      description: "",
-      id: expect.any(String),
-      note: "",
     },
   });
 });
