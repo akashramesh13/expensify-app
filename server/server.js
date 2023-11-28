@@ -1,16 +1,17 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+// Serve the static files (HTML, images, etc.) from the 'public' folder
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/.build", express.static(path.join(__dirname, "..", ".build")));
 
 const publicPath = path.join(__dirname, "..", "public");
-
-app.use(express.static(publicPath));
-
 app.get("*", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log("Server is up on port 3000");
+// Start the server
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
 });

@@ -299,5 +299,5 @@ tream
 public/bundle.js
 public/bundle.js.map
 
-
+.build/
 # End of https://www.toptal.com/developers/gitignore/api/react,node,visualstudiocode,webstorm

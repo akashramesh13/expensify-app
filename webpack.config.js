@@ -1,12 +1,13 @@
 const path = require("path");
 
 module.exports = (env) => {
-  const isProduction = env.production === true;
+  const isProduction = env.production === "true";
   return {
     entry: "./src/app.js",
     output: {
-      path: path.join(__dirname, "public"),
+      path: path.join(__dirname, ".build"),
       filename: "bundle.js",
+      publicPath: "/.build/",
     },
     mode: "development",
     module: {

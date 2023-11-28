@@ -11,7 +11,6 @@
     "dev-server": "webpack-dev-server",
     "test": "jest",
     "start": "node server/server.js",
-    "heroku-postbuild": "npm run build:prod",
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\""
   },
   "author": "",
