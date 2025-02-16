@@ -9,7 +9,7 @@ export const PrivateRoute = (props) => {
       {props.children}
     </div>
   ) : (
-    <Navigate to="/" />
+    <Navigate to="/expensify-app" />
   );
 };
 const mapStateToProps = (state) => ({

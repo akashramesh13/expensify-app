@@ -16,7 +16,7 @@ import PublicRoute from "./PublicRoute";
 export const history = createBrowserHistory();
 
 const AppRouter = () => (
-  <HistoryRouter history={history}>
+  <HistoryRouter history={history} basename="/expensify-app">
     <Routes>
       <Route
         index

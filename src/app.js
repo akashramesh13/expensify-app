@@ -43,12 +43,20 @@ onAuthStateChanged(auth, (user) => {
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
     });
-    if (history.location.pathname === "/") {
-      history.push("/dashboard");
+
+    if (
+      window.location.pathname === "/expensify-app/" ||
+      window.location.pathname === "/expensify-app"
+    ) {
+      history.push("/expensify-app/dashboard");
     }
   } else {
     store.dispatch(logout());
     renderApp();
-    history.push("/");
+
+    // 🚀 The key fix: Only update if the user is NOT already at the correct page
+    if (window.location.pathname !== "/expensify-app/") {
+      window.location.pathname = "/expensify-app/"; // Force correct redirect
+    }
   }
 });

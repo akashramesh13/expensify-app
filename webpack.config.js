@@ -8,10 +8,11 @@ module.exports = (env) => {
   return {
     entry: "./src/app.js",
     output: {
-      path: path.join(__dirname, "dist"), // Final output folder
+      path: path.join(__dirname, "dist"),
       filename: "bundle.js",
-      publicPath: "/expensify-app/", // Must match GitHub repo name
+      publicPath: "/expensify-app/",
     },
+
     mode: isProduction ? "production" : "development",
     module: {
       rules: [
