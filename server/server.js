@@ -1,17 +1,19 @@
 const express = require("express");
 const path = require("path");
+
 const app = express();
+const distPath = path.join(__dirname, "..", "dist");
 
-// Serve the static files (HTML, images, etc.) from the 'public' folder
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/.build", express.static(path.join(__dirname, "..", ".build")));
+// Serve static files from 'dist'
+app.use(express.static(distPath));
 
-const publicPath = path.join(__dirname, "..", "public");
+// Handle React Router (or other SPA) routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // Start the server
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
