@@ -76,18 +76,18 @@ const ThemeToggle = () => {
   }, [currentTheme]);
 
   const handleToggle = () => {
-    let currentIndex = themes.indexOf(currentTheme);
-    let nextIndex = (currentIndex + 1) % themes.length;
-    
-    // Smart skip logic if system matches the next theme
-    if (currentTheme === "theme-system") {
-      const systemResolved = getSystemTheme();
-      if (themes[nextIndex] === systemResolved) {
-        nextIndex = (nextIndex + 1) % themes.length;
-      }
+    const sysTheme = getSystemTheme();
+    let currentOrder;
+    if (sysTheme === "theme-light") {
+      currentOrder = ["theme-system", "theme-terminal", "theme-catppuccin", "theme-light"];
+    } else {
+      currentOrder = ["theme-system", "theme-light", "theme-catppuccin", "theme-terminal"];
     }
+
+    let currentIndex = currentOrder.indexOf(currentTheme);
+    let nextIndex = (currentIndex + 1) % currentOrder.length;
     
-    setCurrentTheme(themes[nextIndex]);
+    setCurrentTheme(currentOrder[nextIndex]);
   };
 
   return (
