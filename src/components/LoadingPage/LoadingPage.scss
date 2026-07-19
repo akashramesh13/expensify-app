@@ -1,0 +1,53 @@
+@use '../../styles/theme' as *;
+
+.loader {
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $l-size;
+  background: $bg-main;
+}
+
+.loader__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid $border;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ─── Not Found Page ───
+.not-found {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $m-size;
+  padding: $xl-size;
+  background: $bg-main;
+}
+
+.not-found__code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: $accent;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.not-found__message {
+  color: $text-muted;
+  font-size: 1.1rem;
+  margin-bottom: $m-size;
+}

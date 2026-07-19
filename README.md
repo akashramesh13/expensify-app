@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Expensify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive expense tracking application built with React, Redux Toolkit, and Firebase.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+```text
+src/
+├── actions/              # (Removed - Migrated to Redux Toolkit Slices)
+├── components/
+│   ├── AddExpensePage.jsx      # Page to create a new expense
+│   ├── EditExpensePage.jsx     # Page to edit an existing expense
+│   ├── ExpenseDashboardPage.jsx# Main dashboard displaying expenses
+│   ├── ExpenseForm.jsx         # Reusable form component for expenses
+│   ├── ExpenseList.jsx         # Component to render the list of expenses
+│   ├── ExpenseListFilters.jsx  # Search, sort, and date range filters
+│   ├── ExpenseListItem.jsx     # Individual expense card
+│   ├── ExpensesSummary.jsx     # Total count and amount summary
+│   ├── Header.jsx              # App header with logo, theme toggle, logout
+│   ├── LoadingPage.jsx         # Full screen loading spinner
+│   ├── LoginPage.jsx           # Google sign-in page
+│   ├── NotFoundPage.jsx        # 404 error page
+│   └── ThemeToggle.jsx         # 4-way theme cycle (system, light, dark, catppuccin)
+├── firebase/
+│   └── firebase.js             # Firebase initialization and configuration
+├── reducers/             # (Removed - Migrated to Redux Toolkit Slices)
+├── routers/
+│   ├── AppRouter.jsx           # BrowserRouter configuration
+│   ├── PrivateRoute.jsx        # HOC for authenticated routes
+│   └── PublicRoute.jsx         # HOC for unauthenticated routes (e.g. login)
+├── selectors/
+│   ├── expenses.js             # Logic for sorting and filtering expenses
+│   └── expenses-total.js       # Logic for calculating total expense amount
+├── store/
+│   ├── authSlice.js            # RTK slice for auth state
+│   ├── configureStore.js       # Redux Toolkit store setup
+│   ├── expensesSlice.js        # RTK slice for expenses and async thunks
+│   └── filtersSlice.js         # RTK slice for filter state
+├── styles/
+│   ├── base/
+│   │   ├── _base.scss          # Base typography and HTML elements
+│   │   └── _settings.scss      # Theme variables and design tokens
+│   ├── components/             # Component-specific styles
+│   │   ├── _box-layout.scss    # Login page layout
+│   │   ├── _button.scss        # Button styles
+│   │   ├── _content-container.scss # Responsive max-width wrappers
+│   │   ├── _form.scss          # Form layouts
+│   │   ├── _header.scss        # Header and navbar styles
+│   │   ├── _input-group.scss   # Filter bar layouts
+│   │   ├── _inputs.scss        # Text, select, and date inputs
+│   │   ├── _list.scss          # Expense list and cards
+│   │   ├── _loader.scss        # Loading spinner styles
+│   │   ├── _page-header.scss   # Summary header styles
+│   │   └── _visibility.scss    # Mobile/desktop utility classes
+│   └── styles.scss             # SCSS entry point
+└── index.jsx                   # Application entry point
+```
 
-### `npm start`
+## Setup & Running
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# Install dependencies
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Start local dev server
+npm start
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Build for production
+npm run build
+```

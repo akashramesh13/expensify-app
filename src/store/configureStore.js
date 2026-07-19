@@ -1,19 +1,14 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import expensesReducer from "../reducers/expenses";
-import filtersReducer from "../reducers/filters";
-import authReducer from "../reducers/auth";
-import thunk from "redux-thunk";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { configureStore } from "@reduxjs/toolkit";
+import expensesReducer from "./expensesSlice";
+import filtersReducer from "./filtersSlice";
+import authReducer from "./authSlice";
 
 export default () => {
-  const store = createStore(
-    combineReducers({
+  return configureStore({
+    reducer: {
       expenses: expensesReducer,
       filters: filtersReducer,
       auth: authReducer,
-    }),
-    composeEnhancers(applyMiddleware(thunk))
-  );
-  return store;
+    },
+  });
 };

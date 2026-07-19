@@ -1,0 +1,35 @@
+@use '../../styles/theme' as *;
+
+.page-header {
+  background: transparent;
+  padding: 3rem 0 1rem;
+}
+
+.page-header__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-header__title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: $text-secondary;
+  margin: 0;
+
+  span {
+    color: $text-main;
+    font-weight: 700;
+  }
+}
+
+.page-header__total {
+  font-size: 2.75rem; // Increased from 2rem
+  font-weight: 800;
+  color: $accent;
+  letter-spacing: -0.04em;
+  margin-top: 0.25rem;
+  line-height: 1;
+}

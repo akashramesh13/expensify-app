@@ -1,0 +1,56 @@
+@use '../../styles/theme' as *;
+
+.header {
+  background: $bg-surface;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.header__container {
+  width: 100%;
+  padding: 0 1rem;
+
+  @media (min-width: $desktop-breakpoint) {
+    padding: 0 3rem; // Push elements to the edges on desktop
+  }
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: $text-main;
+  
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  span {
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  &:hover {
+    color: $text-main;
+  }
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

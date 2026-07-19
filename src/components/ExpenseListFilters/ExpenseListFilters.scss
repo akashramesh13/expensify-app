@@ -1,0 +1,69 @@
+@use '../../styles/theme' as *;
+
+.input-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $m-size;
+  margin-top: $xl-size;
+  margin-bottom: $xl-size;
+
+  @media (min-width: $desktop-breakpoint) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: $l-size;
+  }
+}
+
+.input-group__item {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $text-muted;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.text-input--with-icon {
+  padding-left: 42px !important;
+}
+
+.input-group__item--with-clear {
+  .text-input {
+    padding-right: 48px;
+  }
+}
+
+.input-clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: $text-muted;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 2;
+
+  &:hover {
+    color: $text-main;
+    background: $bg-surface-hover;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}

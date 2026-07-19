@@ -1,0 +1,76 @@
+@use '../../styles/theme' as *;
+
+// ─── Login Page ───
+.login {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $bg-main;
+  padding: $l-size;
+}
+
+.login__card {
+  background: $bg-surface;
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  padding: $xxl-size $xl-size;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: $shadow;
+}
+
+.login__logo {
+  margin-bottom: $l-size;
+  svg {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.login__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: $s-size;
+  letter-spacing: -0.02em;
+}
+
+.login__tagline {
+  color: $text-secondary;
+  font-size: 0.9rem;
+  margin-bottom: $xl-size;
+}
+
+.login__google-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $s-size;
+  width: 100%;
+  padding: 0.8rem $l-size;
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  color: $text-main;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $border-hover;
+    background: $bg-surface-hover;
+    box-shadow: $shadow-sm;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}

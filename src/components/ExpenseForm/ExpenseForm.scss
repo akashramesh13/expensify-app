@@ -1,0 +1,18 @@
+@use '../../styles/theme' as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $m-size;
+  max-width: 32rem;
+}
+
+.form__error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: $danger;
+  background: rgba(239, 68, 68, 0.08);
+  padding: $s-size $m-size;
+  border-radius: $radius-sm;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}

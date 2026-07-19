@@ -1,0 +1,81 @@
+@use '../../styles/theme' as *;
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+  color: $text-muted;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  padding: $m-size;
+  text-decoration: none;
+  color: $text-main;
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  margin-bottom: $s-size;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $border-hover;
+    background: $bg-surface-hover;
+    box-shadow: $shadow-sm;
+    transform: translateY(-1px);
+    color: $text-main;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: $l-size $m-size;
+  }
+}
+
+.list-item__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.list-item__sub-title {
+  color: $text-muted;
+  font-size: 0.8rem;
+  margin-top: 0.15rem;
+}
+
+.list-item__data {
+  margin: $s-size 0 0 0;
+  font-weight: 700;
+  color: $accent;
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0;
+    padding-left: $m-size;
+  }
+}
+
+.list-item--message {
+  align-items: center;
+  color: $text-muted;
+  padding: $xxl-size $m-size;
+  justify-content: center;
+  font-size: 0.9rem;
+  border-style: dashed;
+
+  &:hover {
+    background: $bg-surface;
+    transform: none;
+    box-shadow: none;
+  }
+}
