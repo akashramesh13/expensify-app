@@ -202,12 +202,29 @@ a {
   }
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    var(--accent-subtle),
+    transparent 40%
+  );
+  z-index: -1;
+  transition: background 0.1s ease;
+}
+
 .text-input,
 .select,
 .textarea {
-  background: $input-bg; // Solid background so it doesn't look greyed out
-  border: 1px solid $border;
-  color: $text-main;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--text-main);
   font-family: inherit;
   font-size: 1.05rem;
   font-weight: 500;
@@ -226,6 +243,12 @@ a {
     border-color: $accent;
     box-shadow: 0 0 0 3px $accent-subtle;
   }
+}
+
+.text-input {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .select {

@@ -20,10 +20,11 @@ const ExpenseListFilters = () => {
   return (
     <div className="content-container">
       <div className="input-group">
-        <div className="input-group__item input-group__item--with-clear">
+        <div className="input-group__item input-group__item--with-icon input-group__item--with-clear">
+          <svg className="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input
-            placeholder="Search expenses"
-            className="text-input"
+            placeholder="Search"
+            className="text-input text-input--with-icon"
             type="text"
             value={filters.text}
             onChange={(e) => dispatch(setTextFilter(e.target.value))}
